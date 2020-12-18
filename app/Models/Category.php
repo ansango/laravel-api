@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    protected $fillable = ['name'];
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class, 'foreign_key');
+    }
 }

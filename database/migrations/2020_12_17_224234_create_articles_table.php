@@ -16,14 +16,14 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('author');
             $table->date('published');
             $table->longText('content');
             $table->string('image');
-            $table->unsignedBigInteger('category_id');
-
-            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('category');
+            $table->timestamps();
+            $table->foreign('author')->references('id')->on('authors')->onDelete('cascade');
+            $table->foreign('category')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
