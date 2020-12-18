@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-        return Article::all();
+        return Article::paginate(10, ['id', 'title', 'published']);
     }
 
     public function show(Article $article)
