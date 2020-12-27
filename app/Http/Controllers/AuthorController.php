@@ -8,10 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class AuthorController extends Controller
 {
-
-    public function show(Author $author)
+    public function show(Author $author, $page)
     {
-        $articles = Article::where('author', '=', $author["id"])->paginate(10);
+        $articles = Article::where('author', '=', $author["id"])->paginate(10, ['id', 'title', 'author', 'published'], 'page,', $page)->items();
         return $articles;
     }
 }

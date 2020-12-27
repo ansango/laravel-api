@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthorController;
+use App\Models\Article;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,9 +19,9 @@ use App\Http\Controllers\AuthorController;
 |
 */
 
-Route::get('articles', [ArticleController::class, 'index']);
+Route::get('articles/page/{page}', [ArticleController::class, 'index']);
 Route::get('articles/{article}', [ArticleController::class, 'show']);
 
-Route::get('categories/{category}', [CategoryController::class, 'show']);
-
-Route::get('authors/{author}', [AuthorController::class, 'show']);
+Route::get('categories/{category}/page/{page}', [CategoryController::class, 'show']);
+Route::get('authors/', [AuthorController::class, 'index']);
+Route::get('authors/{author}/page/{page}', [AuthorController::class, 'show']);
